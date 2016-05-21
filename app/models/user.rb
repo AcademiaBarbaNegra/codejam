@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          #,:validatable
          
   has_attached_file :photo
+  has_many :courses
 end
