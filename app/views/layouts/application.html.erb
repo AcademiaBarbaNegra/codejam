@@ -10,11 +10,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+<div class="wrapper">
+  <%= render 'layouts/sidebar' %>
+  <div class="main-panel">
+    <%= render 'layouts/navbar' %>
 
+    <div class="content">
+      <div>
+        <% if notice %>
+          <div class="alert alert-info" role="alert"><%= notice %></div>
+        <% end %>
+        <% if alert %>  
+          <div class="alert alert-danger" role="alert"><%= alert %></div>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
+  </div>
+</div>
 </body>
 
 
