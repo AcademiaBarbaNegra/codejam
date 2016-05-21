@@ -11,8 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
 ActiveRecord::Schema.define(version: 20160521201747) do
 
   create_table "orgs", force: :cascade do |t|
@@ -22,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160521201747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
