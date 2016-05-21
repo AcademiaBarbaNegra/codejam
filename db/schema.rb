@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20160521203328) do
     t.integer  "participants"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
 
   create_table "orgs", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160521203328) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(version: 20160521203328) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
