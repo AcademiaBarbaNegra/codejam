@@ -13,30 +13,31 @@
         </div>
 
         <ul class="nav">
-            <li class="active">
-                <%= link_to(courses_path) do %>
-                    <i class="fa fa-book"></i>
-                    <p>Cursos</p>
-                <% end %>
-            </li>
-            <li>
-                <%= link_to(orgs_path) do %>
-                    <i class="fa fa-university"></i>
-                    <p>Faculdades</p>
-                <% end %>
-            </li>
-            <li>
-                <%= link_to(goals_path) do %>
-                    <i class="fa fa-certificate"></i>
-                    <p>Metas</p>
-                <% end %>
-            </li>
-            <li>
+            <li class="<%= 'active' if controller.controller_name=="goals" %>">
                 <%= link_to(goals_path) do %>
                     <i class="fa fa-map-o"></i>
                     <p>Metas</p>
                 <% end %>
             </li>
+            <li class="<%= 'active' if controller.controller_name=="courses" %>">
+                <%= link_to(courses_path) do %>
+                    <i class="fa fa-book"></i>
+                    <p>Cursos</p>
+                <% end %>
+            </li>
+            <li class="<%= 'active' if controller.controller_name=="orgs" %>">
+                <%= link_to(orgs_path) do %>
+                    <i class="fa fa-university"></i>
+                    <p>Faculdades</p>
+                <% end %>
+            </li>
+            <li class="<%= 'active' if controller.controller_name=="users" %>">
+                <%= link_to(users_path) do %>
+                    <i class="fa fa-users"></i>
+                    <p>Usuários</p>
+                <% end %>
+            </li>
+
         </ul>    
 
         

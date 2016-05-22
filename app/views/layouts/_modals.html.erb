@@ -1,0 +1,97 @@
+
+<!-- Modal -->
+<div class="modal fade" id="sign-in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Entrar</h4>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+          <div class="form-group col-xs-12">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, class: "form-control border-input col-xs-12" %>
+          </div>
+        
+          <div class="form-group col-xs-12">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control border-input col-xs-12"  %>
+          </div>
+        
+
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-5 col-sm-offset-1">
+            <% if devise_mapping.rememberable? -%>
+              <div class="form-group checkbox">
+                <%= f.check_box :remember_me %>
+                <%= f.label "Lembrar de mim" %>
+              </div>
+            <% end -%>
+          </div>
+          <div class="col-sm-3">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+          <div class="col-sm-3">
+            <%= f.submit "Entrar", class:"btn btn-fill" %>             
+          </div>
+        </div>
+
+       
+      </div>
+      <% end %>
+      <div class="modal-footer">
+          <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cadastrar</h4>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+         <%= devise_error_messages! %>
+          <div class="form-group col-xs-12">
+            <%= f.label("E-mail") %><br />
+            <%= f.email_field :email, autofocus: true, class: "form-control border-input col-xs-12" %>
+          </div>
+          <div class="form-group col-xs-12">
+            <%= f.label("Senha") %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control border-input col-xs-12"   %>
+          </div>
+          
+          <div class="form-group col-xs-12">
+            <%= f.label("Confirme sua senha") %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control border-input col-xs-12"  %>
+          </div>
+          
+          <div class="form-group col-xs-12">
+            <%= f.label("Foto") %>
+            <%= f.file_field :photo, class: "form-control border-input col-xs-12"   %>
+          </div>
+        </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <%= f.submit "Cadastrar", class:"btn btn-fill pull-right" %>
+       
+      </div>
+      <% end %>
+      <div class="modal-footer">
+          <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
