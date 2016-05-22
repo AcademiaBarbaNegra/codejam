@@ -33,12 +33,7 @@
                 </div>
                 <hr>
                  <div class="row">
-                    <div class="col-md-4 col-md-offset-1">
-                         <h5>R$ <%= @course.price %><br /><small>Preço</small></h5>
-                    </div>
-                    <div class="col-md-5">
-                        <button type="submit" class="btn btn-info btn-fill btn-wd vertically-align">Inscrever-se</button>
-                    </div>
+                    <h5>R$ <%= @course.price %><br /><small>Preço</small></h5>
                 </div>
             </div>
         </div>
@@ -78,8 +73,14 @@
     <div class="col-lg-8 col-md-7">
         <div class="card">
             <div class="header">
-                <h2 class="title" class="text-center"><%= @course.name %></h2>
+                <div class ="col-lg-8">
+                    <h2 class="title" class="text-center"><%= @course.name %></h2>
+                </div>
+                <div class ="col-lg-4">
+                    <%= link_to "Inscrever-se", @course_path, class:"btn btn-info btn-fill btn-wd"%>
+                </div>
             </div>
+            <div class="row"></div>
             <div class="content">
                 <h3>Descrição</h3>
                 <p><%= @course.description %></p>
@@ -170,24 +171,18 @@
                     </div>
                 </div>
             </div>
+            <div class="row"></div>
+            <div class="row">
+                <%if current_user == @course.owner %>
+                <%= link_to 'Editar Curso', edit_course_path(@course), class:"btn btn-info btn-fill btn-wd", style:"margin:auto"%> 
+                <%end%>
+            </div>
+            
         </div>
     </div>
+    
 </div>
 
 
-       <p>
-  <strong>Owner:</strong>
-  <%= @course.owner %>
-</p>
 
-
-<p>
-  <strong>Difficulty:</strong>
-  <%= @course.difficulty %>
-</p>
-
-
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
 

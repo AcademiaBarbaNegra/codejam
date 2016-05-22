@@ -1,8 +1,4 @@
 
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 .vertically-align{
     position:relative;
     top: 50%;
@@ -15,6 +11,9 @@
     -webkit-transform:translateY(20%);
 }
 
+.centralize{
+    margin:auto;
+}
 
 .card .title .text-center {
     text-align:center;
@@ -23,3 +22,6 @@
 .margin-top-10{
     margin-top:10px;
 }
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
