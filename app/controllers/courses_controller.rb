@@ -82,20 +82,22 @@ class CoursesController < ApplicationController
   
   
   def evaluate
-    @course = Course.new(evaluate_params)
-    evaluationValue = @course.difficulty
     @course = Course.find (params[:id])
-    @course.evaluationNumber += 1
-    difficulty = (@course.difficulty*(evaluationNumber-1) + evaluationValue)/(@course.evaluationNumber)
+    @course.evaluationNumber = @course.evaluationNumber + 1
+    difficulty = (@course.difficulty*(@course.evaluationNumber-1) + evaluate_params[:difficulty].to_f)/(@course.evaluationNumber)
     @course.difficulty = difficulty
     if difficulty < 1.67
+      
       @course.level = "Fácil"
     elsif difficulty > 1.67 && difficulty < 3.33
       @course.level = "Intermediário"
+    
     else
       @course.level = "Avançado"
+    
     end
-    @course.save
+    @course.save!
+    redirect_to '/'
   end
   
   
