@@ -5,11 +5,11 @@
         
         <div class=" card-user  ">
                 <div class="image">
-                    <%= image_tag "background.jpg" %>
+                    <%= image_tag @org.capa.url(:cover)%>
                 </div>
                  <div class="content">
                     <div class="author">
-                        <%= image_tag("faces/face-2.jpg", class:"avatar border-white") %>
+                        <%= image_tag @org.picture.url(:square), class:"avatar border-white" %>
                         <h4 class="title"><%= @org.name %><br/>
                             <small><%= @org.campus %></small>
                         </h4>

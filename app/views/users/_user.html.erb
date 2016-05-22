@@ -8,11 +8,12 @@
                <div class="author">
                    <%= link_to user_path(user) do %>
                        <%= image_tag(user.photo.url(:square), class:"avatar border-white") %>
-                   <% end %>
+                   
                    <h4 class="title">
                        <%= user.name %>
                        <br/>
-                       <small>@<%= user.username %></small>
+                       <small>@<%= user.email %></small>
+                    <% end %>
                    </h4>
                </div>
                 <p class="description text-center">

@@ -1,0 +1,29 @@
+
+<div class="col-lg-4 col-md-5">
+    <div class="card card-user">
+        <div class="image">
+            <%= image_tag "background.jpg" %>
+        </div>
+        <div class="content">
+            <div class="author">
+                <%= image_tag "tim_80x80.png", class:"avatar border-white" %>
+                <h4 class="title"><%= goal.name %><br/>
+                    <small><%= goal.courses.count %> Cursos</small>
+                </h4>
+            </div>
+            <div class="row text-center">
+                <%= link_to "Seguir camminho", "#", class: "btn btn-success" %> 
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">
+
+            <% goal.courses.each do |curso| %>
+            <div class="row">
+                <h3><%= link_to curso.name, course_path(curso) %></h3>
+            </div>
+            <% end %>
+
+        </div>
+    </div>
+</div>

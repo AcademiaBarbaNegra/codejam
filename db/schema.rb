@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522155331) do
+ActiveRecord::Schema.define(version: 20160522164840) do
 
   create_table "course_goals", force: :cascade do |t|
     t.integer  "course_id"
@@ -72,6 +72,10 @@ ActiveRecord::Schema.define(version: 20160522155331) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.integer  "org_id"
+    t.string   "capa_file_name"
+    t.string   "capa_content_type"
+    t.integer  "capa_file_size"
+    t.datetime "capa_updated_at"
   end
 
   create_table "user_connections", force: :cascade do |t|
