@@ -9,7 +9,7 @@
             </div>
             <div class="content">
                 <div class="author">
-                  <%= image_tag(@course.picture, class:"avatar border-white") %>
+                  <%= image_tag(@course.picture.url(:square), class:"avatar border-white") %>
                   <h4 class="title"><%= @course.name %><br />
                      <small><%= link_to @course.org.name, org_path(@course.org) %></small>
                   </h4>

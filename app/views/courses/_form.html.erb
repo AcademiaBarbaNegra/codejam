@@ -12,9 +12,16 @@
                     </div>
                 </div>
             </div>
-        
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <%= f.label "Faculdade" %><br />
+                      <%= f.collection_select :org_id, Org.all, :id, :name, {include_blank: false}, {multiple: false, class:"form-control chosen"} %>
+                    
+                    </div>
+                </div>
+            </div>
              <div class="row">
-                <%= devise_error_messages! %>
                 <div class="col-md-12">
                     <div class="form-group">
                        <%= f.label :"Introdução" %><br>
@@ -82,6 +89,21 @@
                   </div>
                 </div>
             </div>
+               <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :"Foto de perfil" %><br />
+                  <%= f.file_field :picture, autocomplete: "off", class:"form-control border-input" %>
+                </div> 
+              </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <%= f.label :"Foto de Capa" %> <br />
+                    <%= f.file_field :cover, autocomplete: "off" , class:"form-control border-input" %>
+                  </div>
+                </div>
+            </div>
             <div class="row">
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                 <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -95,33 +117,4 @@
         <% end %>
     </div>
 </div>
-
-  <div class="field">
-    <%= f.label :intro %><br>
-    <%= f.text_field :intro %>
-  </div>
-  <div class="field">
-    <%= f.label :faculdade %>
-    <%= f.collection_select :org_id, Org.all, :id, :name, {include_blank: false}, {multiple: false, class:"form-control"} %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_field :content %>
-  </div>
-  <div class="field">
-    <%= f.label :capacity %><br>
-    <%= f.number_field :capacity %>
-  </div>
-  <div class="field">
-    <%= f.label :participants %><br>
-    <%= f.number_field :participants %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :resource_name
   helper_method :resource
   helper_method :devise_mapping
+  before_action :configure_permitted_parameters, if: :devise_controller? 
   
   def resource_name
     :user
@@ -17,5 +18,14 @@ class ApplicationController < ActionController::Base
 
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
+  end
+
+
+
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:update) << [:cover, :picture, :photo ]
   end
 end
