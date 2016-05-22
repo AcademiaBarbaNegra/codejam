@@ -22,10 +22,20 @@
     <div class="content">
       <div>
         <% if notice %>
-          <div class="alert alert-info" role="alert"><%= notice %></div>
+          <div class="alert alert-info" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <span><%= notice %></span>
+          </div>
         <% end %>
         <% if alert %>  
-          <div class="alert alert-danger" role="alert"><%= alert %></div>
+          <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <span><%= alert %></span>
+          </div>
         <% end %>
       </div>
       <%= yield %>
@@ -33,61 +43,8 @@
     <%= render 'layouts/footer' %>
   </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Log in</h4>
-      </div>
-      <div class="modal-body">
-        <div class="content">
-          <div class="form-group col-xs-12">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, class: "form-control border-input col-xs-12" %>
-          </div>
-        
-          <div class="form-group col-xs-12">
-            <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "off", class: "form-control border-input col-xs-12"  %>
-          </div>
-        
 
-        </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <% if devise_mapping.rememberable? -%>
-              <div class="form-group checkbox">
-                <%= f.check_box :remember_me %>
-                <%= f.label "Lembrar de mim" %>
-              </div>
-            <% end -%>
-          </div>
-        </div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <%= f.submit "Entrar", class:"btn btn-fill pull-right" %>
-       
-      </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render 'layouts/modals' %>
 
 </body>
-
-
-	<!--  Charts Plugin 
-	<script src="assets/js/chartist.min.js"></script>
-
-    <!--  Google Maps Plugin   
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-
-    <!-- Paper Dashboard Core javascript and methods for Demo purpose 
-	<script src="assets/js/paper-dashboard.js"></script>
-
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! 
-	<script src="assets/js/demo.js"></script>-->
-
 </html>
