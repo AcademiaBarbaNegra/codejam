@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522092037) do
+ActiveRecord::Schema.define(version: 20160522155331) do
 
   create_table "course_goals", force: :cascade do |t|
     t.integer  "course_id"
@@ -28,17 +28,25 @@ ActiveRecord::Schema.define(version: 20160522092037) do
     t.float    "difficulty"
     t.integer  "capacity"
     t.integer  "participants"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.integer  "org_id"
     t.integer  "owner_id"
     t.datetime "start"
     t.datetime "end"
     t.float    "price"
     t.float    "grade"
-    t.string   "level",            default: "Sem Avaliação"
+    t.string   "level",                default: "Sem Avaliação"
     t.float    "coursegrade"
-    t.integer  "evaluationNumber", default: 0
+    t.integer  "evaluationNumber",     default: 0
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "courses", ["org_id"], name: "index_courses_on_org_id"
@@ -107,6 +115,10 @@ ActiveRecord::Schema.define(version: 20160522092037) do
     t.string   "name"
     t.string   "bio"
     t.string   "username"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

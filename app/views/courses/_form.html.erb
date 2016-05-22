@@ -1,6 +1,6 @@
 
     <div class="content">
-        <%= form_for(@course) do |f| %>
+        <%= form_for(@course, multipart: true) do |f| %>
         
           <div class="row">
                 <%= devise_error_messages! %>
@@ -94,13 +94,13 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <%= f.label :"Foto de perfil" %><br />
-                  <%= f.file_field :picture, autocomplete: "off", class:"form-control border-input" %>
+                  <%= f.file_field :picture, class:"form-control border-input" %>
                 </div> 
               </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <%= f.label :"Foto de Capa" %> <br />
-                    <%= f.file_field :cover, autocomplete: "off" , class:"form-control border-input" %>
+                    <%= f.file_field :cover , class:"form-control border-input" %>
                   </div>
                 </div>
             </div>
