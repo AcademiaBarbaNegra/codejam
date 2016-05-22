@@ -6,14 +6,74 @@
   <title>Ahooy!</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,300" rel="stylesheet" type="text/css">
   <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+<div class="wrapper">
+  <%= render 'layouts/sidebar' %>
+  <div class="main-panel">
+    <%= render 'layouts/navbar' %>
+
+    <div class="content">
+      <div>
+        <% if notice %>
+          <div class="alert alert-info" role="alert"><%= notice %></div>
+        <% end %>
+        <% if alert %>  
+          <div class="alert alert-danger" role="alert"><%= alert %></div>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Log in</h4>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+          <div class="form-group col-xs-12">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, class: "form-control border-input col-xs-12" %>
+          </div>
+        
+          <div class="form-group col-xs-12">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control border-input col-xs-12"  %>
+          </div>
+        
+
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <% if devise_mapping.rememberable? -%>
+              <div class="form-group checkbox">
+                <%= f.check_box :remember_me %>
+                <%= f.label "Lembrar de mim" %>
+              </div>
+            <% end -%>
+          </div>
+        </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <%= f.submit "Entrar", class:"btn btn-fill pull-right" %>
+       
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 </body>
 
