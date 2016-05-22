@@ -7,7 +7,7 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= @course.owner %>
+  <%=User.find(@course.owner_id).name %>
 </p>
 
 <p>

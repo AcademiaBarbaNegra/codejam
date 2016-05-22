@@ -25,6 +25,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
+    @course = Course.new
     
   end
 
@@ -38,6 +39,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    @course.owner_id = current_user.id
 
     respond_to do |format|
       if @course.save
