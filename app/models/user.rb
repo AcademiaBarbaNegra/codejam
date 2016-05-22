@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
 
 
   
-  has_many :courses
+  has_many :user_courses
+  has_many :courses, :through => :user_courses
   has_many :goals
   has_many(:user_connections, :foreign_key => :user_a_id, :dependent => :destroy)
   has_many(:reverse_user_connections, :class_name => :UserConnection,
