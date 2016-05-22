@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   
   get 'courses/:id/new_evaluation', to: 'courses#new_evaluation'
   
+  get 'users/:id/recommend_courses', to: 'users#recommendCourses'
+  
+  
   patch 'courses/:id/evaluate', to: 'courses#evaluate', as: 'evaluation'
 
   

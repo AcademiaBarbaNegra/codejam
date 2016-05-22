@@ -83,7 +83,11 @@ class CoursesController < ApplicationController
   
   def evaluate
     @course = Course.find (params[:id])
+    @user = current_user
+    u = @user.user_courses.where(course_id: params[:id])
+    u.update_all(:graderecommendation => evaluate_params[:difficulty])
     @course.evaluationNumber = @course.evaluationNumber + 1
+    @course.save!
     difficulty = (@course.difficulty*(@course.evaluationNumber-1) + evaluate_params[:difficulty].to_f)/(@course.evaluationNumber)
     @course.difficulty = difficulty
     if difficulty < 1.67
