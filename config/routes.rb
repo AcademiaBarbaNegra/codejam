@@ -30,6 +30,7 @@ Rails.application.routes.draw do
    
    get 'orgs/id' => 'orgs#show'
    
+   resources :user_connections, only: [:create, :destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
