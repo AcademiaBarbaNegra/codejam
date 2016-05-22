@@ -1,8 +1,4 @@
 
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 .vertically-align{
     position:relative;
     top: 50%;
@@ -12,9 +8,12 @@
 .vertically-align-icon{
     position:relative;
     top: 50%;
-    -webkit-transform:translateY(30%);
+    -webkit-transform:translateY(20%);
 }
 
+.centralize{
+    margin:auto;
+}
 
 .card .title .text-center {
     text-align:center;
@@ -24,9 +23,11 @@
     margin-top:10px;
 }
 
+
 .panel-card {
   text-align: center;
   text-transform: none;
   margin-top: 30px;
   
 }
+
