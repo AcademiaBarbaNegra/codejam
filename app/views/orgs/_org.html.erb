@@ -1,6 +1,4 @@
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
+
             <div class="col-lg-4 col-md-5">
                 <div class="card card-user">
                     <div class="image">
@@ -9,7 +7,7 @@
                     <div class="content">
                         <div class="author">
                             <%= image_tag("faces/face-2.jpg", class:"avatar border-white") %>
-                            <h4 class="title"><%= link_to  org.name, org.email %><br/>
+                            <h4 class="title"><%= link_to  org.name,org_path(org) %><br/>
                                 <small><%= org.campus %></small>
                             </h4>
                         </div>
@@ -30,6 +28,3 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
