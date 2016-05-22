@@ -5,6 +5,9 @@ class Course < ActiveRecord::Base
     
     has_one :owner, :class_name => "User" , primary_key: "owner_id", foreign_key: "id"
     
+    has_many :course_goals
+    has_many :goals, :through => :course_goals
+    
     has_many :user_courses
     has_many :users, :through => :user_courses
     
