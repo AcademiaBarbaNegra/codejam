@@ -1,7 +1,4 @@
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
             <div class="col-lg-4 col-md-5">
                 <div class="card card-user">
                     <div class="image">
@@ -11,7 +8,9 @@
                         <div class="author">
                           <%= image_tag(course.picture, class:"avatar border-white") %>
                           <h4 class="title"><%= course.name %><br />
+                          <% if course.org %>
                              <small><%= course.org.name %></small>
+                         <% end %>
                           </h4>
                         </div>
                         <p class="description text-center">
@@ -43,6 +42,3 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
