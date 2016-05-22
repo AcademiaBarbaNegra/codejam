@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :buy]
+  
   # GET /courses
   # GET /courses.json
   def index
@@ -11,15 +11,25 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
   end
+  
+  def buy
+    @user = current_user
+    user.courses = Course.find 
+  end
+  
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = course
+    redirect_to "courses#index"
+    
   end
 
   # GET /courses/1/edit
   def edit
   end
+  
+  
 
   # POST /courses
   # POST /courses.json
@@ -60,6 +70,8 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

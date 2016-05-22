@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable
          #,:validatable
          
-  has_attached_file :photo, styles: { small: "64x64#", square: "200x200#", large: "600x600#"}
+  has_attached_file :photo, styles: {small: "64x64#", square: "200x200#", large: "600x600#"}
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 
