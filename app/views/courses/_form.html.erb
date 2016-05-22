@@ -1,21 +1,102 @@
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
-      <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="content">
+        <%= form_for(@course) do |f| %>
+        
+          <div class="row">
+                <%= devise_error_messages! %>
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <%= f.label :"Nome do curso" %><br />
+                      <%= f.text_field :name, autofocus: true, class:"form-control border-input" %>
+                    
+                    </div>
+                </div>
+            </div>
+        
+             <div class="row">
+                <%= devise_error_messages! %>
+                <div class="col-md-12">
+                    <div class="form-group">
+                       <%= f.label :"Introdução" %><br>
+                         <%= f.text_field :intro, autofocus: true, class:"form-control border-input" %>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                         <%= f.label :"Descrição" %><br>
+                         <%= f.text_field :description,  autofocus: true, class:"form-control border-input" %>
+                    </div>
+                </div>
+            </div>
+                   
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                         <%= f.label :"Conteúdo" %><br>
+                         <%= f.text_field :content,  autofocus: true, class:"form-control border-input" %>
+                    </div>
+                </div>
+            </div>
+             
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <%= f.label :"Nível" %><br />
+                  <%= f.text_field :difficulty, autocomplete: "off", class:"form-control border-input"  %>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <%= f.label :Vagas %><br />
+                  <%= f.text_field :capacity, autocomplete: "off", class:"form-control border-input" %>
+                </div> 
+              </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <%= f.label :"Participantes" %> <br />
+                    <%= f.text_field :participants, autocomplete: "off" , class:"form-control border-input" %>
+                  </div>
+                </div>
+            </div>
+            
+               <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <%= f.label :"Data de início" %><br />
+                  <%= f.text_field :start, autocomplete: "off", class:"form-control border-input"  %>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <%= f.label :"Data de término" %><br />
+                  <%= f.text_field :end, autocomplete: "off", class:"form-control border-input" %>
+                </div> 
+              </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <%= f.label :"Preço" %> <br />
+                    <%= f.text_field :price, autocomplete: "off" , class:"form-control border-input" %>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+            </div>
+
+            <div class="text-center">
+                <%= f.submit "Criar" , class:"btn btn-info btn-fill btn-wd" %>
+            </div>
+            <div class="clearfix"></div>
+        <% end %>
     </div>
-  <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-
+<<<<<<< HEAD
   <div class="field">
     <%= f.label :intro %><br>
     <%= f.text_field :intro %>
@@ -44,3 +125,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+=======
+>>>>>>> 91f9f1ae05316763328610ec0403c48d61d2b84b

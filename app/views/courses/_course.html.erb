@@ -1,17 +1,16 @@
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
             <div class="col-lg-4 col-md-5">
                 <div class="card card-user">
                     <div class="image">
-                        <%= image_tag "background.jpg" %>
+                        <%= image_tag course.cover %>
                     </div>
                     <div class="content">
                         <div class="author">
-                          <%= image_tag("faces/face-2.jpg", class:"avatar border-white") %>
+                          <%= image_tag(course.picture, class:"avatar border-white") %>
                           <h4 class="title"><%= course.name %><br />
-                             <a href="#"><small>Course org</small></a>
+                          <% if course.org %>
+                             <small><%= course.org.name %></small>
+                         <% end %>
                           </h4>
                         </div>
                         <p class="description text-center">
@@ -25,24 +24,21 @@
                                  <h5><%= course.capacity %><br /><small>Vagas</small></h5>
                             </div>
                              <div class="col-md-4">
-                               <h5>03/05<br /><small>Início</small></h5>
+                               <h5><% course.start %><br /><small>Início</small></h5>
                             </div>
                             <div class="col-md-3">
-                               <h5>19/04<br /><small>Término</small></h5>
+                               <h5><% course.end %><br /><small>Término</small></h5>
                             </div>
                         </div>
                         <hr>
                          <div class="row">
                             <div class="col-md-4 col-md-offset-1">
-                                 <h5>R$ 25<br /><small>Preço</small></h5>
+                                 <h5>R$ <% course.price %><br /><small>Preço</small></h5>
                             </div>
                             <div class="col-md-5">
-                                <button type="submit" class="btn btn-info btn-fill btn-wd" style="top: 50%; position: relative; transform: translateY(+40%) ">Inscrever-se</button>
+                                <%= link_to "Saiba mais", course_path(course), class:"btn btn-info btn-fill btn-wd vertically-align-icon"%>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>

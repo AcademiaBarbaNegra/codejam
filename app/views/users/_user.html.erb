@@ -10,9 +10,9 @@
                        <%= image_tag(user.photo.url(:square), class:"avatar border-white") %>
                    <% end %>
                    <h4 class="title">
-                       <%= link_to user.name, user_path(user) %>
+                       <%= user.name %>
                        <br/>
-                       <small><%= user.email %></small>
+                       <small>@<%= user.username %></small>
                    </h4>
                </div>
                 <p class="description text-center">
@@ -21,17 +21,27 @@
            </div>
            <hr>
            <div class="text-center">
+              <div class="row">
+                   <div class="col-sm-10 col-sm-offset-1">
+                   <% if current_user && !(current_user.user_connections.where(user_b_id: user.id).any?) && current_user!=user %>
+                       <%= link_to "Criar conexão", user_connections_path(:user_a_id => current_user.id, :user_b_id => user.id), :method => :post, class:"btn btn-success" %>
+                   <% elsif current_user && current_user!=user %>
+                       <%= link_to "Remover conexão", user_connection_path(current_user.user_connections.where(user_b_id: user.id).first.id), :method => :delete, class:"btn" %>
+                   <% end %>
+                   </div>
+               </div>
                <div class="row">
-                        <div class="col-md-3 col-md-offset-1">
-                            <h5><%= user.courses.count %><br /><small>Cursos</small></h5>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><%= user.goals.count %><br /><small>Metas</small></h5>
-                        </div>
-                        <div class="col-md-3">
-                            <h5><%= user.user_connections.count %><br /><small>Contatos</small></h5>
-                        </div>
+                    <div class="col-md-3 col-md-offset-1">
+                        <h5><%= user.courses.count %><br /><small>Cursos</small></h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5><%= user.goals.count %><br /><small>Metas</small></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><%= user.user_connections.count %><br /><small>Contatos</small></h5>
+                    </div>
                </div>
            </div>
+
        </div>
    </div>

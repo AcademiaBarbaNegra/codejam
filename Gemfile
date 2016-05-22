@@ -29,9 +29,12 @@ gem 'devise'
 
 gem 'paperclip'
 
+<<<<<<< HEAD
 gem 'slope_one'
 
 gem "parse-ruby-client"
+=======
+>>>>>>> 91f9f1ae05316763328610ec0403c48d61d2b84b
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

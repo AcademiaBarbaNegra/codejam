@@ -1,6 +1,60 @@
-<h1>Editing Course</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-md-5">
+            <div class="card card-user">
+                <div class="image">
+                    <%= image_tag @course.cover %>
+                </div>
+                <div class="content">
+                    <div class="author">
+                        <%= image_tag(@course.org.picture , class:"avatar border-white") %>
+                      <h4 class="title"><%= @course.name %><br />
+                         <a href="#"><small><%= @course.org.name %></small></a>
+                      </h4>
+                    </div>
+                    <p class="description text-center">
+                        <%= @course.intro %>
+                    </p>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-1">
+                            <h5><%= @course.capacity %><br /><small>Vagas</small></h5>
+                        </div>
+                        <div class="col-md-4">
+                            <h5><%= @course.start%><br /><small>Início</small></h5>
+                        </div>
+                        <div class="col-md-3">
+                            <h5><%= @course.end %><br /><small>Término</small></h5>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                       <h5><%= @course.price %><br /><small>Preço</small></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Cancelar conta</h4>
+                </div>
+                <div class="content">
+                    <%= button_to "Remover conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class:"btn btn-danger" %>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-7">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Editar Curso</h4>
+                </div>
+                <%= render 'form' %>
+            </div>
+        </div>
+    </div>
+</div>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+
+<%= link_to 'Voltar', courses_path, class:"btn btn-sm btn-success btn-icon center" %>
