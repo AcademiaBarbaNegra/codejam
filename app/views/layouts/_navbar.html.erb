@@ -23,9 +23,7 @@
                       </ul>
                 </li>
                 <% else %>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up">
-                      Cadastrar
-                    </button>
+                    <%= link_to "Cadastrar", new_user_registration_path, class:"btn btn-primary btn-lg" %>
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-in">
                       Entrar
                     </button>
