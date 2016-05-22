@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :buy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
   
   # GET /courses
   # GET /courses.json
@@ -13,15 +13,18 @@ class CoursesController < ApplicationController
   end
   
   def buy
+    course = Course.find(params[:id])
     @user = current_user
-    user.courses = Course.find 
+    if !@user.courses.exists?(params[:id])
+      @user.courses << course
+    end
+    @user.save!
+    redirect_to '/'
   end
   
 
   # GET /courses/new
   def new
-    @course = course
-    redirect_to "courses#index"
     
   end
 
@@ -81,6 +84,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :owner, :intro, :description, :content, :difficulty, :capacity, :participants)
+      params.require(:course).permit(:name, :intro, :description, :content, :difficulty, :capacity, :participants)
     end
 end
