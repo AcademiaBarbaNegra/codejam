@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :buy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
   
   # GET /courses
   # GET /courses.json
@@ -13,15 +13,19 @@ class CoursesController < ApplicationController
   end
   
   def buy
+    course = Course.find(params[:id])
     @user = current_user
-    user.courses = Course.find 
+    if !@user.courses.exists?(params[:id])
+      @user.courses << course
+    end
+    @user.save!
+    redirect_to '/'
   end
   
 
   # GET /courses/new
   def new
-    @course = course
-    redirect_to "courses#index"
+    @course = Course.new
     
   end
 
@@ -35,7 +39,8 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
+    @course.owner_id = current_user.id
+    
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
@@ -71,6 +76,29 @@ class CoursesController < ApplicationController
     end
   end
   
+  def new_evaluation
+    @course = Course.find(params[:id])
+  end
+  
+  
+  def evaluate
+    @course = Course.new(evaluate_params)
+    evaluationValue = @course.difficulty
+    @course = Course.find (params[:id])
+    @course.evaluationNumber += 1
+    difficulty = (@course.difficulty*(evaluationNumber-1) + evaluationValue)/(@course.evaluationNumber)
+    @course.difficulty = difficulty
+    if difficulty < 1.67
+      @course.level = "Fácil"
+    elsif difficulty > 1.67 && difficulty < 3.33
+      @course.level = "Intermediário"
+    else
+      @course.level = "Avançado"
+    end
+    @course.save
+  end
+  
+  
   
 
   private
@@ -81,6 +109,10 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :owner, :intro, :description, :content, :difficulty, :capacity, :participants)
+      params.require(:course).permit(:name, :intro, :org_id, :description, :content, :difficulty, :capacity, :participants)
+    end
+    
+    def evaluate_params
+      params.require(:course).permit(:difficulty)
     end
 end

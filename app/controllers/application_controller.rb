@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     :user
   end
 
+
   def resource
     @resource ||= User.new
   end

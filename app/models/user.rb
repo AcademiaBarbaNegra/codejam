@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          
   has_attached_file :photo, styles: {small: "64x64#", square: "200x200#", large: "600x600#"}
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-
+  has_attached_file :cover, styles: { cover: "800x300#"}
 
   has_many :user_goals
   has_many :goals, :through => :user_goals

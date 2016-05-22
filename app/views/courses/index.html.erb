@@ -21,7 +21,7 @@
     <% @courses.each do |course| %>
       <tr>
         <td><%= course.name %></td>
-        <td><%= course.owner %></td>
+        <td><%= User.find(course.owner_id).name %></td>
         <td><%= course.intro %></td>
         <td><%= course.description %></td>
         <td><%= course.content %></td>
