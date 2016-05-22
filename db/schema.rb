@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522020119) do
+ActiveRecord::Schema.define(version: 20160522022114) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
-    t.string   "owner"
     t.string   "intro"
     t.string   "description"
     t.string   "content"
@@ -25,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160522020119) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "org_id"
+    t.integer  "owner_id"
   end
 
   add_index "courses", ["org_id"], name: "index_courses_on_org_id"
