@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Faculdade:</strong>
+  <%=Org.find(@course.org_id).name %>
+</p>
+
+<p>
   <strong>Owner:</strong>
   <%=User.find(@course.owner_id).name %>
 </p>
