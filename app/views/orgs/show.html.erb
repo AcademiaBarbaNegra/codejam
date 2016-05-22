@@ -1,19 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="card">
+        
+        <div class=" card-user  ">
+                <div class="image">
+                    <%= image_tag "background.jpg" %>
+                </div>
+                 <div class="content">
+                    <div class="author">
+                        <%= image_tag("faces/face-2.jpg", class:"avatar border-white") %>
+                        <h4 class="title"><%= @org.name %><br/>
+                            <small><%= @org.campus %></small>
+                        </h4>
+                    </div>
+                     <p class="description text-center">
+                       <button type="submit" class="btn btn-info btn-fill btn-wd ">Visitar site</button>
+                    </p>
+                </div>
+        </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="row">
+      <% @org.courses.each do |course| %>
+        <%= render course %>
+      <%end%>
+      </div>
+  </div>
+  
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @org.name %>
-</p>
 
-<p>
-  <strong>Campus:</strong>
-  <%= @org.campus %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @org.email %>
-</p>
-
-<%= link_to 'Edit', edit_org_path(@org) %> |
-<%= link_to 'Back', orgs_path %>

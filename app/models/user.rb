@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
 
   has_many :user_goals
   has_many :goals, :through => :user_goals
+  
+  has_many :owned_courses, :class_name => "Course", foreign_key: :owner_id
+  
   has_many :user_courses
   has_many :courses, :through => :user_courses
   has_many(:user_connections, :foreign_key => :user_a_id, :dependent => :destroy)
