@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :orgs
   #devise_for :users, controllers: { sessions: "users/sessions" }
   devise_for :users, :controllers => {:registrations => "users/registrations"}
-  #get 'users' => 'users#index'
-  #get 'users/:id' => 'users#show', as: :user
+  get 'users' => 'users#index'
+  get 'users/:id' => 'users#show', as: :user
 
   get 'courses/:id/buy', to: 'courses#buy'
   
