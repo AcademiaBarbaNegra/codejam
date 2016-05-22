@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522032924) do
+ActiveRecord::Schema.define(version: 20160522072224) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -21,16 +21,17 @@ ActiveRecord::Schema.define(version: 20160522032924) do
     t.float    "difficulty"
     t.integer  "capacity"
     t.integer  "participants"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "org_id"
     t.integer  "owner_id"
     t.datetime "start"
     t.datetime "end"
     t.float    "price"
     t.float    "grade"
-    t.string   "level"
+    t.string   "level",            default: "Sem Avaliação"
     t.float    "coursegrade"
+    t.integer  "evaluationNumber"
   end
 
   add_index "courses", ["org_id"], name: "index_courses_on_org_id"

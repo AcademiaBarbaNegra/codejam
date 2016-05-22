@@ -76,6 +76,29 @@ class CoursesController < ApplicationController
     end
   end
   
+  def new_evaluation
+    @course = Course.find(params[:id])
+  end
+  
+  
+  def evaluate
+    @course = Course.new(evaluate_params)
+    evaluationValue = @course.difficulty
+    @course = Course.find (params[:id])
+    @course.evaluationNumber += 1
+    difficulty = (@course.difficulty*(evaluationNumber-1) + evaluationValue)/(@course.evaluationNumber)
+    @course.difficulty = difficulty
+    if difficulty < 1.67
+      @course.level = "Fácil"
+    elsif difficulty > 1.67 && difficulty < 3.33
+      @course.level = "Intermediário"
+    else
+      @course.level = "Avançado"
+    end
+    @course.save
+  end
+  
+  
   
 
   private
@@ -87,5 +110,9 @@ class CoursesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
       params.require(:course).permit(:name, :intro, :org_id, :description, :content, :difficulty, :capacity, :participants)
+    end
+    
+    def evaluate_params
+      params.require(:course).permit(:difficulty)
     end
 end

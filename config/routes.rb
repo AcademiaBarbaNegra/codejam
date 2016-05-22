@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show', as: :user
 
   get 'courses/:id/buy', to: 'courses#buy'
+  
+  get 'courses/:id/new_evaluation', to: 'courses#new_evaluation'
+  
+  post 'courses/:id/evaluate', to: 'courses#evaluate'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
