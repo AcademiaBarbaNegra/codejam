@@ -23,6 +23,7 @@
     margin-top:10px;
 }
 
+
 .land {
   width: 100%;
   border-radius:2px;
@@ -36,6 +37,14 @@
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
+
+.panel-card {
+  text-align: center;
+  text-transform: none;
+  margin-top: 30px;
+  
+}
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";

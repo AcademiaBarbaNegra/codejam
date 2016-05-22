@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   
   get 'courses/:id/new_evaluation', to: 'courses#new_evaluation'
   
-  post 'courses/:id/evaluate', to: 'courses#evaluate'
+  patch 'courses/:id/evaluate', to: 'courses#evaluate', as: 'evaluation'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
    
    get 'orgs/id' => 'orgs#show'
    
+   resources :user_connections, only: [:create, :destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
