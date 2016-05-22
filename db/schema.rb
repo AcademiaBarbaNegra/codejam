@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521211100) do
+ActiveRecord::Schema.define(version: 20160522014514) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 20160521211100) do
     t.integer  "participants"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "course_id"
+    t.integer  "org_id"
   end
+
+  add_index "courses", ["org_id"], name: "index_courses_on_org_id"
 
   create_table "goals", force: :cascade do |t|
     t.string   "name"
@@ -50,6 +52,27 @@ ActiveRecord::Schema.define(version: 20160521211100) do
     t.integer  "org_id"
   end
 
+  create_table "user_connections", force: :cascade do |t|
+    t.integer  "user_a_id"
+    t.integer  "user_b_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_courses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_goals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -67,7 +90,6 @@ ActiveRecord::Schema.define(version: 20160521211100) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.integer  "user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
